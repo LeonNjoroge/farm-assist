@@ -7,10 +7,10 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular-devkit/build-angular:browser",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/farm-assist/browser",
+        "outputPath": "dist/apps/farm-assist",
         "index": "apps/farm-assist/src/index.html",
         "main": "apps/farm-assist/src/main.ts",
         "polyfills": ["zone.js"],
@@ -23,7 +23,10 @@
           }
         ],
         "styles": ["apps/farm-assist/src/styles.scss"],
-        "scripts": []
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/farm-assist/webpack.config.ts"
+        }
       },
       "configurations": {
         "production": {
@@ -39,7 +42,10 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/farm-assist/webpack.prod.config.ts"
+          }
         },
         "development": {
           "buildOptimizer": false,
@@ -53,7 +59,11 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@angular-devkit/build-angular:dev-server",
+      "executor": "@nx/angular:module-federation-dev-server",
+      "options": {
+        "port": 4200,
+        "publicHost": "http://localhost:4200"
+      },
       "configurations": {
         "production": {
           "buildTarget": "farm-assist:build:production"
@@ -87,60 +97,6 @@
         "port": 4200,
         "spa": true
       }
-    },
-    "server": {
-      "dependsOn": ["build"],
-      "executor": "@angular-devkit/build-angular:server",
-      "options": {
-        "outputPath": "dist/apps/farm-assist/server",
-        "main": "apps/farm-assist/src/server.ts",
-        "tsConfig": "apps/farm-assist/tsconfig.server.json",
-        "inlineStyleLanguage": "scss"
-      },
-      "configurations": {
-        "production": {
-          "outputHashing": "media"
-        },
-        "development": {
-          "buildOptimizer": false,
-          "optimization": false,
-          "sourceMap": true,
-          "extractLicenses": false,
-          "vendorChunk": true
-        }
-      },
-      "defaultConfiguration": "production"
-    },
-    "serve-ssr": {
-      "executor": "@angular-devkit/build-angular:ssr-dev-server",
-      "configurations": {
-        "development": {
-          "browserTarget": "farm-assist:build:development",
-          "serverTarget": "farm-assist:server:development"
-        },
-        "production": {
-          "browserTarget": "farm-assist:build:production",
-          "serverTarget": "farm-assist:server:production"
-        }
-      },
-      "defaultConfiguration": "development"
-    },
-    "prerender": {
-      "executor": "@angular-devkit/build-angular:prerender",
-      "options": {
-        "routes": ["/"]
-      },
-      "configurations": {
-        "development": {
-          "browserTarget": "farm-assist:build:development",
-          "serverTarget": "farm-assist:server:development"
-        },
-        "production": {
-          "browserTarget": "farm-assist:build:production",
-          "serverTarget": "farm-assist:server:production"
-        }
-      },
-      "defaultConfiguration": "production"
     }
   }
 }
