@@ -16,10 +16,10 @@
     "@angular/router": "~19.1.0",
     "@angular/ssr": "~19.1.0",
     "@nrwl/angular": "^19.8.4",
+    "@nx/angular": "20.4.6",
     "express": "^4.21.2",
     "rxjs": "~7.8.0",
-    "zone.js": "~0.15.0",
-    "@nx/angular": "20.4.6"
+    "zone.js": "~0.15.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.1.0",
@@ -41,6 +41,8 @@
     "@nx/webpack": "20.4.6",
     "@nx/workspace": "20.4.6",
     "@playwright/test": "^1.36.0",
+    "@rspack/binding-linux-x64-gnu": "^1.2.6",
+    "@rspack/core": "^1.2.6",
     "@schematics/angular": "~19.1.0",
     "@swc-node/register": "~1.9.1",
     "@swc/core": "~1.5.7",
