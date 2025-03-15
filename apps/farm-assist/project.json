@@ -51,7 +51,7 @@
       "executor": "@nx/web:file-server",
       "options": {
         "buildTarget": "farm-assist:build",
-        "port": 4200,
+        "port": 4201,
         "staticFilePath": "dist/apps/farm-assist/browser",
         "spa": true
       }
@@ -118,7 +118,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4200
+        "port": 4201
       }
     }
   }
