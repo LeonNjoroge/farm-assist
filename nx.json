@@ -15,9 +15,8 @@
     ],
     "sharedGlobals": []
   },
-  "nxCloudId": "67bd0b142c5bb460bff6fae3",
   "targetDefaults": {
-    "@angular-devkit/build-angular:browser": {
+    "@angular-devkit/build-angular:application": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
@@ -46,20 +45,6 @@
     },
     "e2e-ci--**/*": {
       "dependsOn": ["^build"]
-    },
-    "server": {
-      "cache": true
-    },
-    "@nx/angular:webpack-browser": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": [
-        "production",
-        "^production",
-        {
-          "env": "NX_MF_DEV_REMOTES"
-        }
-      ]
     }
   },
   "plugins": [
